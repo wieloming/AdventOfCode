@@ -1,15 +1,28 @@
 import scala.io._
 
-val strings = Source
+val source = Source
   .fromFile("C:/Users/Lukasz/Desktop/JaVa/Scala/AdventOfCode/data/input.txt").getLines.toList
-strings
-  .map(s => s.length - length(s))
+
+val strings = source
+  .map(_.length)
   .sum
-def length(string: String): Int = {
-  val hexes = string.length - string.replace("""\"""+"""x""", "x").length
-  string
-    .replace("""\x""", "")
-    .replace("\\\\", "o")
-    .replace("\\\"", "o")
-    .length - 2 - hexes
-}
+
+val inMemory = source
+  .map(
+    _.replace("\\\\", "o")
+      .replace("\\\"", "o")
+      .replace("\"", "")
+      .replaceAll("\\\\x[0-9a-f]{2}", "o")
+      .length)
+  .sum
+
+val encoded = source
+  .map(
+    _.replaceAll("\\\\x[0-9a-f]{2}", "ooooo")
+      .replace("\\\"", "oooo")
+      .replace("\\\\", "oooo")
+      .length + 4
+  ).sum
+
+strings - inMemory
+encoded - strings
