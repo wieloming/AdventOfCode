@@ -1,3 +1,6 @@
+//display in 3d array points described by patterns like:
+// turn off 370,39 through 425,839
+
 def doStuffWithLights(command: String, map: Array[Array[Int]]) = {
   val what = command.split(",").toList.head.split(" ").init.mkString(" ")
   def startPoint: (Int, Int) = {

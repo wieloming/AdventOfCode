@@ -1,3 +1,4 @@
+// count amount of material needed for patterns like: 2x3x4
 def surface(pattern: String): Long = {
   val l::w::h::Nil =  pattern.split('x').toList.map(_.toLong)
   val sides = List(l*h, w*h, l*w)

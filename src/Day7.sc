@@ -1,3 +1,6 @@
+//create stream from instructions like:
+// bn RSHIFT 2 -> bo
+//and apply value to it
 import scala.util.{Failure, Success, Try}
 import scala.collection.mutable
 

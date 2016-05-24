@@ -1,3 +1,7 @@
+// calculate how long is string
+//"\x27" is 6 characters of code, but the string itself
+// contains just one - an apostrophe ('), escaped using
+// hexadecimal notation.
 import scala.io._
 
 val source = Source
